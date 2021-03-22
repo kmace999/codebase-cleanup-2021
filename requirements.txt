@@ -15,4 +15,4 @@ plotly
 #
 
 pytest
-#autopep8
+autopep8

@@ -3,7 +3,7 @@ from random import choice
 
 #
 # USER SELECTION
-#
+# incorporating code from class demonstrations
 VALID_OPTIONS = ["rock","paper","scissors"]
 u = input("Please choose one of 'Rock', 'Paper', or 'Scissors': ").lower()
 print("USER CHOICE:", u)
@@ -21,24 +21,24 @@ print("COMPUTER CHOICE:", c)
 #
 # DETERMINATION OF WINNER
 #
-
-if u==c:
-    print("It's a tie!")
-
-if u=="rock":
-    if c == "paper":
-        print("The computer wins")
-    elif c== "scissors":
-        print("The user wins")
-
-elif u=="paper":
-    if c == "rock":
-        print("The computer wins")
-    elif c == "scissors":
-        print("The user wins")
-
-else:
-    if c == "paper":
-        print("The user wins")
-    elif u == "scissors" and c == "scissors":
+def determine_winner(u,c):
+    if u==c:
         print("It's a tie!")
+
+    elif u=="rock":
+        if c == "paper":
+            print("The computer wins")
+        elif c== "scissors":
+            print("The user wins")
+
+    elif u=="paper":
+        if c == "rock":
+            print("The computer wins")
+        elif c == "scissors":
+            print("The user wins")
+
+    else:
+        if c == "paper":
+            print("The user wins")
+        elif u == "scissors" and c == "scissors":
+            print("It's a tie!")

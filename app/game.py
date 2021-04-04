@@ -30,7 +30,7 @@ def determine_winner(u,c):
 
     Examples: determine_winner("rock","paper")
     """
-    if u==c:
+    if user==c:
         print("It's a tie!")
 
     elif u=="rock":
@@ -40,15 +40,15 @@ def determine_winner(u,c):
             print("The user wins")
 
     elif u=="paper":
-        if c == "rock":
+        if c == "scissors":
             print("The computer wins")
-        elif c == "scissors":
+        elif c == "rock":
             print("The user wins")
 
-    else:
-        if c == "paper":
+    elif u =="scissors":
+        if c == "rock":
+            print("The computer wins")
+        elif u "paper":
             print("The user wins")
-        elif u == "scissors" and c == "scissors":
-            print("It's a tie!")
 
 determine_winner(u,c)

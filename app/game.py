@@ -21,34 +21,34 @@ print("COMPUTER CHOICE:", c)
 #
 # DETERMINATION OF WINNER
 #
-def determine_winner(u,c):
+def determine_winner(user,comp):
     """
     Determines winner of rock, paper, scissors game.
 
-    Params u is the user's move validated from ["rock","paper","scissors"]
-    and c is the computer's move randomly generated from ["rock","paper","scissors"]
+    Params user is the user's move validated from ["rock","paper","scissors"]
+    and comp is the computer's move randomly generated from ["rock","paper","scissors"]
 
     Examples: determine_winner("rock","paper")
     """
-    if u==c:
+    if user==comp:
         winner = None
 
-    elif u=="rock":
-        if c == "paper":
+    elif user=="rock":
+        if comp == "paper":
             winner = c
-        elif c== "scissors":
+        elif comp== "scissors":
             winner = u
 
-    elif u=="paper":
-        if c == "scissors":
+    elif user=="paper":
+        if comp == "scissors":
             winner = c
-        elif c == "rock":
+        elif comp == "rock":
             winner = u
 
-    elif u =="scissors":
-        if c == "rock":
+    elif user =="scissors":
+        if comp == "rock":
             winner = c
-        elif u == "paper":
+        elif comp == "paper":
             winner = u
 
 winner = determine_winner(u,c)

@@ -35,26 +35,26 @@ def determine_winner(user,comp):
 
     elif user=="rock":
         if comp == "paper":
-            winner = c
+            winner = "c"
         elif comp== "scissors":
-            winner = u
+            winner = "u"
 
     elif user=="paper":
         if comp == "scissors":
-            winner = c
+            winner = "c"
         elif comp == "rock":
-            winner = u
+            winner = "u"
 
     elif user =="scissors":
         if comp == "rock":
-            winner = c
+            winner = "c"
         elif comp == "paper":
-            winner = u
+            winner = "u"
 
 winner = determine_winner(u,c)
-if winner ==c:
+if winner =="c":
     print("The computer wins")
-elif winner == u:
+elif winner == "u":
     print("The user wins")
 elif winner == None:
     print("There's a tie!")

@@ -48,7 +48,7 @@ def determine_winner(u,c):
     elif u =="scissors":
         if c == "rock":
             print("The computer wins")
-        elif u "paper":
+        elif u == "paper":
             print("The user wins")
 
 determine_winner(u,c)

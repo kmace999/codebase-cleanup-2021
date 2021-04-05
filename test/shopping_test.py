@@ -12,7 +12,6 @@ def test_format_usd():
 
 
 def test_find_product():
-   assert find_product("DONE") == None
    assert find_product("1") == ["Chocolate Sandwich Cookies"]
    assert find_product("2") == ["All-Seasons Salt"]
    assert find_product("3") == ["Robust Golden Unsweetened Oolong Tea"]

@@ -22,15 +22,14 @@ def find_product(prod):
 
     Examples: find_product("2")
     """
-    if prod.upper() == "DONE":
-        break
+
+    matching_products = [p for p in products if str(p["id"]) == str(prod)]
+    if any(matching_products):
+        founditem = matching_products[0]
+        selected_products.append(founditem)
+        product_check = founditem["name"]
     else:
-        matching_products = [p for p in products if str(p["id"]) == str(prod)]
-        if any(matching_products):
-            selected_products.append(matching_products[0])
-            product_check = matching_products[1]
-        else:
-            print("OOPS, Couldn't find that product. Please try again.")
+        print("OOPS, Couldn't find that product. Please try again.")
 
 
 
@@ -48,10 +47,13 @@ if __name__ == "__main__":
     # CAPTURE PRODUCT SELECTIONS
 
     selected_products = []
-
-    while True:
+    filling_cart = True
+    while filling_cart:
         selected_id = input("Please select a product identifier: ")
-        find_product(selected_id)
+        if selected_id.upper() == "DONE":
+            filling_cart = False
+        else:
+            find_product(selected_id)
 
 
 

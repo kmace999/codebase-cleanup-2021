@@ -8,3 +8,7 @@ from app.shopping import format_usd
 def test_format_usd():
     #result = format_usd(1999.99)
     assert format_usd(1999.99) == "$1,999.99"
+
+
+#def test_find_product():
+#    assert find_product("DONE") == None 

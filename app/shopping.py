@@ -13,6 +13,7 @@ def format_usd(my_price):
     """
     return f"${my_price:,.2f}"
 
+
 #PREVENT ALL THE APP CODE FROM BEING IMPORTED
 #BUT STILL BE ABLE TO RUN IT FROM THE COMMAND LINE LIKE THIS
 if __name__ == "__main__":
@@ -42,19 +43,42 @@ if __name__ == "__main__":
 
     # PRINT RECEIPT
 
-    print("---------")
-    print("CHECKOUT AT: " + str(checkout_at.strftime("%Y-%M-%d %H:%m:%S")))
-    print("---------")
-    for p in selected_products:
-        print("SELECTED PRODUCT: " + p["name"] + "   " + '${:.2f}'.format(p["price"]))
 
-    print("---------")
-    print(f"SUBTOTAL: {format_usd(subtotal)}")
-    print(f"TAX: {format_usd(subtotal * 0.0875)}")
-    print(f"TOTAL: {format_usd((subtotal * 0.0875) + subtotal)}")
-    print("---------")
-    print("THANK YOU! PLEASE COME AGAIN SOON!")
-    print("---------")
+    formatted_selected_products = []
+    for p in selected_products:
+        chosenitem = ("SELECTED PRODUCT: " + p["name"] + "   " + '${:.2f}'.format(p["price"]))
+        formatted_selected_products.append(chosenitem)
+
+    receipt = [["---------",
+    "CHECKOUT AT: " + str(checkout_at.strftime("%Y-%M-%d %H:%m:%S")),
+    "---------"],
+    formatted_selected_products,
+    ["---------",
+    f"SUBTOTAL: {format_usd(subtotal)}",
+    f"TAX: {format_usd(subtotal * 0.0875)}",
+    f"TOTAL: {format_usd((subtotal * 0.0875) + subtotal)}",
+    "---------",
+    "THANK YOU! PLEASE COME AGAIN SOON!",
+    "---------"
+    ]]
+
+    # print("---------")
+    # print("CHECKOUT AT: " + str(checkout_at.strftime("%Y-%M-%d %H:%m:%S")))
+    # print("---------")
+    # for p in selected_products:
+    #     print("SELECTED PRODUCT: " + p["name"] + "   " + '${:.2f}'.format(p["price"]))
+    #
+    # print("---------")
+    # print(f"SUBTOTAL: {format_usd(subtotal)}")
+    # print(f"TAX: {format_usd(subtotal * 0.0875)}")
+    # print(f"TOTAL: {format_usd((subtotal * 0.0875) + subtotal)}")
+    # print("---------")
+    # print("THANK YOU! PLEASE COME AGAIN SOON!")
+    # print("---------")
+    for line in receipt:
+
+        for anotherline in line:
+            print(anotherline)
 
     # WRITE RECEIPT TO FILE
 
@@ -62,14 +86,17 @@ if __name__ == "__main__":
     receipt_filepath = os.path.join(os.path.dirname(__file__), "..", "receipts", f"{receipt_id}.txt")
 
     with open(receipt_filepath, "w") as receipt_file:
-        receipt_file.write("------------------------------------------")
-        for p in selected_products:
-            receipt_file.write("\nSELECTED PRODUCT: " + p["name"] + "   " + '${:.0f}'.format(p["price"]))
-
-        receipt_file.write("\n---------")
-        receipt_file.write(f"\nSUBTOTAL: {format_usd(subtotal)}")
-        receipt_file.write(f"\nTAX: {format_usd(subtotal * 0.875)}")
-        receipt_file.write(f"\nTOTAL: {format_usd((subtotal * 0.875) + subtotal)}")
-        receipt_file.write("\n---------")
-        receipt_file.write("\nTHANK YOU! PLEASE COME AGAIN SOON!")
-        receipt_file.write("\n---------")
+        for line in receipt:
+            for anotherline in line:
+                receipt_file.write(f"\n {anotherline}")
+        # receipt_file.write("------------------------------------------")
+        # for p in selected_products:
+        #     receipt_file.write("\nSELECTED PRODUCT: " + p["name"] + "   " + '${:.0f}'.format(p["price"]))
+        #
+        # receipt_file.write("\n---------")
+        # receipt_file.write(f"\nSUBTOTAL: {format_usd(subtotal)}")
+        # receipt_file.write(f"\nTAX: {format_usd(subtotal * 0.875)}")
+        # receipt_file.write(f"\nTOTAL: {format_usd((subtotal * 0.875) + subtotal)}")
+        # receipt_file.write("\n---------")
+        # receipt_file.write("\nTHANK YOU! PLEASE COME AGAIN SOON!")
+        # receipt_file.write("\n---------")

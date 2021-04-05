@@ -14,15 +14,24 @@ def format_usd(my_price):
     return f"${my_price:,.2f}"
 
 
-def find_product():
-    if selected_id.upper() == "DONE":
+def find_product(prod):
+    """
+    Finds product from local products csv file and adds product to a selected_products list
+
+    Params prod is a numerical id in string format corresponding to a product
+
+    Examples: find_product("2")
+    """
+    if prod.upper() == "DONE":
         break
     else:
-        matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+        matching_products = [p for p in products if str(p["id"]) == str(prod)]
         if any(matching_products):
             selected_products.append(matching_products[0])
+            product_check = matching_products[1]
         else:
             print("OOPS, Couldn't find that product. Please try again.")
+
 
 
 #PREVENT ALL THE APP CODE FROM BEING IMPORTED
@@ -33,6 +42,8 @@ if __name__ == "__main__":
     products_filepath = os.path.join(os.path.dirname(__file__), "..", "data", "products.csv")
     products_df = read_csv(products_filepath)
     products = products_df.to_dict("records")
+
+
 
     # CAPTURE PRODUCT SELECTIONS
 

@@ -31,6 +31,8 @@ def determine_winner(user,comp):
         elif comp == "paper":
             winner = "u"
 
+    return winner
+
 
 #PREVENT ALL THE APP CODE FROM BEING IMPORTED
 #BUT STILL BE ABLE TO RUN IT FROM THE COMMAND LINE LIKE THIS

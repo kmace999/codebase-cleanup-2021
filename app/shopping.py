@@ -33,14 +33,14 @@ def find_product(prod):
 
 
 
+products_filepath = os.path.join(os.path.dirname(__file__), "..", "data", "products.csv")
+products_df = read_csv(products_filepath)
+products = products_df.to_dict("records")
 #PREVENT ALL THE APP CODE FROM BEING IMPORTED
 #BUT STILL BE ABLE TO RUN IT FROM THE COMMAND LINE LIKE THIS
 if __name__ == "__main__":
     # READ INVENTORY OF PRODUCTS
 
-    products_filepath = os.path.join(os.path.dirname(__file__), "..", "data", "products.csv")
-    products_df = read_csv(products_filepath)
-    products = products_df.to_dict("records")
 
 
 

@@ -44,7 +44,7 @@ def determine_winner(user,comp):
         "scissors":{
             "rock":"rock",
             "paper":"scissors",
-            "scissors",None,
+            "scissors":None,
         },
     }
     winner = winners[user][comp]

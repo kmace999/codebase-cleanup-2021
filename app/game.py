@@ -5,31 +5,53 @@ def determine_winner(user,comp):
     """
     Determines winner of rock, paper, scissors game.
 
-    Params user is the user's move validated from ["rock","paper","scissors"]
-    and comp is the computer's move randomly generated from ["rock","paper","scissors"]
+    Params:
+        user is the user's move validated from ["rock","paper","scissors"]
+        and comp is the computer's move randomly generated from ["rock","paper","scissors"]
 
     Examples: determine_winner("rock","paper")
     """
-    if user==comp:
-        winner = None
+    # if user==comp:
+    #     winner = None
+    #
+    # elif user=="rock":
+    #     if comp == "paper":
+    #         winner = "c"
+    #     elif comp== "scissors":
+    #         winner = "u"
+    #
+    # elif user=="paper":
+    #     if comp == "scissors":
+    #         winner = "c"
+    #     elif comp == "rock":
+    #         winner = "u"
+    #
+    # elif user =="scissors":
+    #     if comp == "rock":
+    #         winner = "c"
+    #     elif comp == "paper":
+    #         winner = "u"
 
-    elif user=="rock":
-        if comp == "paper":
-            winner = "c"
-        elif comp== "scissors":
-            winner = "u"
 
-    elif user=="paper":
-        if comp == "scissors":
-            winner = "c"
-        elif comp == "rock":
-            winner = "u"
-
-    elif user =="scissors":
-        if comp == "rock":
-            winner = "c"
-        elif comp == "paper":
-            winner = "u"
+    #example code from class
+    winners = {
+        "rock": {
+            "rock":None,
+            "paper":"paper",
+            "scissors":"rock",
+        },
+        "paper":{
+            "rock":"paper",
+            "paper":None,
+            "scissors":"scissors",
+        },
+        "scissors":{
+            "rock":"rock",
+            "paper": "scissors",
+            "scissors":None,
+        },
+    }
+    winner = winners[user][comp] ##was winning_choice = winners[user_choice][computer_choice]
 
     return winner
 
@@ -62,9 +84,9 @@ if __name__ == "__main__":
 
 
     winner = determine_winner(u,c)
-    if winner =="c":
-        print("The computer wins")
-    elif winner == "u":
-        print("The user wins")
+    if winner == u:
+        print("You won!")
+    elif winner == c:
+        print("The computer won. Try again!")
     elif winner == None:
-        print("There's a tie!")
+        print("It was a tie!")

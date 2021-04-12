@@ -14,22 +14,25 @@ def format_usd(my_price):
     return f"${my_price:,.2f}"
 
 
-def find_product(prod):
+def find_product(prodid,allprods):
     """
     Finds product from local products csv file and adds product to a selected_products list
 
-    Params prod is a numerical id in string format corresponding to a product
+    Params: prodid (str) like "8", allprods (list of dict) each dict should have "id", "name", "department", "aisle", and "price" attributes
 
-    Examples: find_product("2")
     """
-
-    matching_products = [p for p in products if str(p["id"]) == str(prod)]
+    matching_products = [p for p in allprods if str(p["id"])==str(prodid)]
     if any(matching_products):
-        founditem = matching_products[0]
-        selected_products.append(founditem)
-        product_check = founditem["name"]
+        return matching_products[0]
     else:
-        print("OOPS, Couldn't find that product. Please try again.")
+        return None
+    # matching_products = [p for p in products if str(p["id"]) == str(prod)]
+    # if any(matching_products):
+    #     founditem = matching_products[0]
+    #     selected_products.append(founditem)
+    #     product_check = founditem["name"]
+    # else:
+    #     print("OOPS, Couldn't find that product. Please try again.")
 
 
 
@@ -53,7 +56,11 @@ if __name__ == "__main__":
         if selected_id.upper() == "DONE":
             filling_cart = False
         else:
-            find_product(selected_id)
+            matching_product = find_product(selected_id,products)
+            if matching_product != None:
+                selected_products.append(matching_product)
+            else:
+                print("OOPS, Couldn't find that product. Please try again.")
 
 
 
